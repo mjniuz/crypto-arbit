@@ -346,7 +346,7 @@
                 $(allRequest).each(function(k, v){
 
                     //console.log(data);
-                    if(typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol){
+                    if(typeof data != 'undefined' && typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol){
                         let sell    = (parseFloat(data.ask)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
                         let buy     = (parseFloat(data.bid)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
 
