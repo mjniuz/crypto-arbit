@@ -100,6 +100,19 @@
         $.get("https://api.hitbtc.com/api/2/public/symbol", function(data, status){
             console.log(data);
         });
+        /*
+
+        'USDT-BTC',
+        'USDT-XLM',
+        'USDT-XRP',
+        'USDT-XMR',
+        'USDT-ADA',
+        'USDT-DOGE',
+        'USDT-LINK',
+        'USDT-MATIC',
+        'USDT-UNI',
+        'USDT-TRX',
+        */
         let allRequest  = [
             {
                 "id": "usdt-idr",
@@ -122,7 +135,8 @@
                         "symbol": "BTCUSD"
                     },
                     "id": 2
-                }
+                },
+                "bittrex_pair":"USDT-BTC"
             },
             {
                 "id": "str-idr",
@@ -137,7 +151,8 @@
                         "symbol": "XLMUSD"
                     },
                     "id": 3
-                }
+                },
+                "bittrex_pair":"USDT-XLM"
             },
             {
                 "id": "xrp-idr",
@@ -152,7 +167,8 @@
                         "symbol": "XRPUSDT"
                     },
                     "id": 4
-                }
+                },
+                "bittrex_pair":"USDT-XRP"
             },
             {
                 "id": "ada-idr",
@@ -167,7 +183,8 @@
                         "symbol": "ADAUSD"
                     },
                     "id": 5
-                }
+                },
+                "bittrex_pair":"USDT-ADA"
             },
             {
                 "id": "doge-idr",
@@ -182,7 +199,8 @@
                         "symbol": "DOGEUSD"
                     },
                     "id": 6
-                }
+                },
+                "bittrex_pair":"USDT-DOGE"
             },
             {
                 "id": "link-idr",
@@ -197,7 +215,8 @@
                         "symbol": "LINKUSD"
                     },
                     "id": 7
-                }
+                },
+                "bittrex_pair":"USDT-LINK"
             },
             {
                 "id": "matic-idr",
@@ -205,7 +224,8 @@
                 "request_indodax":{
                     "sub":"maticidr.kline.1m",
                     "id":"8"
-                }
+                },
+                "bittrex_pair":"USDT-MATIC"
             },
             {
                 "id": "uni-idr",
@@ -220,7 +240,8 @@
                         "symbol": "UNIUSD"
                     },
                     "id": 9
-                }
+                },
+                "bittrex_pair":"USDT-UNI"
             },
             {
                 "id": "trx-idr",
@@ -235,7 +256,8 @@
                         "symbol": "TRXUSD"
                     },
                     "id": 10
-                }
+                },
+                "bittrex_pair":"USDT-TRX"
             },
             {
                 "id": "xmr-idr",
@@ -250,7 +272,8 @@
                         "symbol": "XMRUSD"
                     },
                     "id": 11
-                }
+                },
+                "bittrex_pair":"USDT-XMR"
             }
         ];
 
@@ -374,6 +397,39 @@
 
                         $("#indodax-buy-" + v.id).text(buy);
                         $("#indodax-sell-" + v.id).text(sell);
+                    }
+                })
+                //console.log(dataIndodax);
+            }
+
+            //console.log(msg.data);
+        }
+        /**
+         * Bittrex Socket
+         * @type {WebSocket}
+         */
+        //
+        var socketBittrex = new WebSocket("ws://bittrex-node-socket-7rg3r.ondigitalocean.app");
+        //var socketBittrex = new WebSocket("ws://localhost:8080");
+        socketBittrex.onopen = function(){
+            alert("Socket has been opened Bittrex!");
+        }
+
+        socketBittrex.onmessage = function(msg){
+            //console.log(msg);
+            if(typeof msg.data != 'undefined'){
+                // continue
+                let dataBittrex = JSON.parse(msg.data).data;
+
+                //console.log({"bittrex": dataBittrex});
+                $(allRequest).each(function(k, v){
+                    if(typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair){
+                        let sell    = (dataBittrex.sell*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+                        let buy     = (dataBittrex.buy*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+
+                        //console.log(sell);
+                        $("#bittrex-buy-" + v.id).text(buy);
+                        $("#bittrex-sell-" + v.id).text(sell);
                     }
                 })
                 //console.log(dataIndodax);
