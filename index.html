@@ -408,35 +408,37 @@
          * Bittrex Socket
          * @type {WebSocket}
          */
-        //
-        var socketBittrex = new WebSocket("ws://bittrex-node-socket-7rg3r.ondigitalocean.app");
-        //var socketBittrex = new WebSocket("ws://localhost:8080");
-        socketBittrex.onopen = function(){
-            alert("Socket has been opened Bittrex!");
-        }
-
-        socketBittrex.onmessage = function(msg){
-            //console.log(msg);
-            if(typeof msg.data != 'undefined'){
-                // continue
-                let dataBittrex = JSON.parse(msg.data).data;
-
-                //console.log({"bittrex": dataBittrex});
-                $(allRequest).each(function(k, v){
-                    if(typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair){
-                        let sell    = formatMoney(dataBittrex.sell*parseFloat($('base').data('usdt')) ,2,',','.');
-                        let buy     = formatMoney(dataBittrex.buy*parseFloat($('base').data('usdt')), 2,',','.');
-
-                        //console.log(sell);
-                        $("#bittrex-buy-" + v.id).text(buy);
-                        $("#bittrex-sell-" + v.id).text(sell);
-                    }
-                })
-                //console.log(dataIndodax);
+        setTimeout(function(){
+            var socketBittrex = new WebSocket("ws://bittrex-node-socket-7rg3r.ondigitalocean.app");
+            //var socketBittrex = new WebSocket("ws://localhost:8080");
+            socketBittrex.onopen = function(){
+                alert("Socket has been opened Bittrex!");
             }
 
-            //console.log(msg.data);
-        }
+            socketBittrex.onmessage = function(msg){
+                //console.log(msg);
+                if(typeof msg.data != 'undefined'){
+                    // continue
+                    let dataBittrex = JSON.parse(msg.data).data;
+
+                    //console.log({"bittrex": dataBittrex});
+                    $(allRequest).each(function(k, v){
+                        if(typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair){
+                            let sell    = formatMoney(dataBittrex.sell*parseFloat($('base').data('usdt')) ,2,',','.');
+                            let buy     = formatMoney(dataBittrex.buy*parseFloat($('base').data('usdt')), 2,',','.');
+
+                            //console.log(sell);
+                            $("#bittrex-buy-" + v.id).text(buy);
+                            $("#bittrex-sell-" + v.id).text(sell);
+                        }
+                    })
+                    //console.log(dataIndodax);
+                }
+
+                //console.log(msg.data);
+            }
+        }, 5000);
+
 
          function formatMoney(num, decPlaces, thouSeparator, decSeparator) {
             var n = num,
