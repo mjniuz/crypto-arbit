@@ -347,8 +347,8 @@
 
                     //console.log(data);
                     if(typeof data != 'undefined' && typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol){
-                        let sell    = (parseFloat(data.ask)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
-                        let buy     = (parseFloat(data.bid)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+                        let sell    = formatMoney(parseFloat(data.ask)*parseFloat($('base').data('usdt')),2,',','.');
+                        let buy     = formatMoney(parseFloat(data.bid)*parseFloat($('base').data('usdt')),2,',','.');
 
                         $("#hitbtc-buy-" + v.id).text(buy);
                         $("#hitbtc-sell-" + v.id).text(sell);
@@ -387,8 +387,8 @@
                 let dataIndodax = JSON.parse(msg.data);
                 $(allRequest).each(function(k, v){
                     if(typeof dataIndodax.ch != 'undefined' && dataIndodax.ch == v.request_indodax.sub){
-                        let buy     = dataIndodax.tick.o.formatMoney(2,',','.');
-                        let sell    = dataIndodax.tick.c.formatMoney(2,',','.');
+                        let buy     = formatMoney(dataIndodax.tick.o, 2,',','.');
+                        let sell    = formatMoney(dataIndodax.tick.c,2,',','.');
 
                         // Special USDT - IDR
                         if(dataIndodax.ch == 'usdtidr.kline.1m'){
@@ -424,8 +424,8 @@
                 //console.log({"bittrex": dataBittrex});
                 $(allRequest).each(function(k, v){
                     if(typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair){
-                        let sell    = (dataBittrex.sell*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
-                        let buy     = (dataBittrex.buy*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+                        let sell    = formatMoney(dataBittrex.sell*parseFloat($('base').data('usdt')) ,2,',','.');
+                        let buy     = formatMoney(dataBittrex.buy*parseFloat($('base').data('usdt')), 2,',','.');
 
                         //console.log(sell);
                         $("#bittrex-buy-" + v.id).text(buy);
@@ -438,8 +438,8 @@
             //console.log(msg.data);
         }
 
-        Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
-            var n = this,
+         function formatMoney(num, decPlaces, thouSeparator, decSeparator) {
+            var n = num,
                 decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
                 decSeparator = decSeparator == undefined ? "." : decSeparator,
                 thouSeparator = thouSeparator == undefined ? "," : thouSeparator,
