@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <base data-usdt=""/>
+    <title>MJ Crypto Trading Arbit Indodax, Bittrex, HitBTC</title>
+    <style>
+        .buy{
+            background-color: #b6ffb2;
+        }
+        .sell{
+            background-color: #fadfca;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                        <li><a href="#" class="text-white">Like on Facebook</a></li>
+                        <li><a href="#" class="text-white">Email me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <strong>Album</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Indodax</th>
+                    <th scope="col">Bittrex</th>
+                    <th scope="col">HitBTC</th>
+                </tr>
+                </thead>
+                <tbody id="result">
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+</main>
+
+<footer class="text-muted">
+    <div class="container">
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    </div>
+</footer>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+        $.get("https://indodax.com/api/pairs", function(data, status){
+            console.log(data);
+        });
+        $.get("https://api.hitbtc.com/api/2/public/symbol", function(data, status){
+            console.log(data);
+        });
+        let allRequest  = [
+            {
+                "id": "usdt-idr",
+                "title": "USDT",
+                "request_indodax": {
+                    "sub":"usdtidr.kline.1m",
+                    "id":"1"
+                }
+            },
+            {
+                "id": "btc-idr",
+                "title": "BTC",
+                "request_indodax":{
+                    "sub":"btcidr.kline.1m",
+                    "id":"2"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "BTCUSD"
+                    },
+                    "id": 2
+                }
+            },
+            {
+                "id": "str-idr",
+                "title": "XLM",
+                "request_indodax":{
+                    "sub":"stridr.kline.1m",
+                    "id":"3"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "XLMUSD"
+                    },
+                    "id": 3
+                }
+            },
+            {
+                "id": "xrp-idr",
+                "title": "XRP",
+                "request_indodax":{
+                    "sub":"xrpidr.kline.1m",
+                    "id":"4"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "XRPUSDT"
+                    },
+                    "id": 4
+                }
+            },
+            {
+                "id": "ada-idr",
+                "title": "ADA",
+                "request_indodax": {
+                    "sub": "adaidr.kline.1m",
+                    "id": "5"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "ADAUSD"
+                    },
+                    "id": 5
+                }
+            },
+            {
+                "id": "doge-idr",
+                "title": "DOGE",
+                "request_indodax":{
+                    "sub":"dogeidr.kline.1m",
+                    "id":"6"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "DOGEUSD"
+                    },
+                    "id": 6
+                }
+            },
+            {
+                "id": "link-idr",
+                "title": "LINK",
+                "request_indodax":{
+                    "sub":"linkidr.kline.1m",
+                    "id":"7"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "LINKUSD"
+                    },
+                    "id": 7
+                }
+            },
+            {
+                "id": "matic-idr",
+                "title": "MATIC",
+                "request_indodax":{
+                    "sub":"maticidr.kline.1m",
+                    "id":"8"
+                }
+            },
+            {
+                "id": "uni-idr",
+                "title": "UNI",
+                "request_indodax":{
+                    "sub":"uniidr.kline.1m",
+                    "id":"9"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "UNIUSD"
+                    },
+                    "id": 9
+                }
+            },
+            {
+                "id": "trx-idr",
+                "title": "TRX",
+                "request_indodax":{
+                    "sub":"trxidr.kline.1m",
+                    "id":"10"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "TRXUSD"
+                    },
+                    "id": 10
+                }
+            },
+            {
+                "id": "xmr-idr",
+                "title": "XMR",
+                "request_indodax":{
+                    "sub":"xmridr.kline.1m",
+                    "id":"11"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "XMRUSD"
+                    },
+                    "id": 11
+                }
+            }
+        ];
+
+        $(allRequest).each(function(k, v){
+            let htmlTable   = '';
+
+            htmlTable   += '<tr>\n' +
+                '                   <th rowspan="2">'+ v.title +'</th>' +
+                '                   <td class="buy">' +
+                '                        Buy' +
+                '                   </td>' +
+                '                   <td class="buy">' +
+                '                       <span id="indodax-buy-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                   <td class="buy">' +
+                '                       <span id="bittrex-buy-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                   <td class="buy">' +
+                '                       <span id="hitbtc-buy-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                </tr>';
+
+            htmlTable   += '<tr>\n' +
+                '                   <th class="sell">Sell</th>' +
+                '                   <td class="sell">' +
+                '                       <span id="indodax-sell-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                   <td class="sell">' +
+                '                       <span id="bittrex-sell-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                   <td class="sell">' +
+                '                       <span id="hitbtc-sell-'+ v.id +'"></span>' +
+                '                   </td>' +
+                '                </tr>';
+
+            $(htmlTable).appendTo("#result");
+        });
+
+        /**
+         * HitBTC Socket
+         * @type {WebSocket}
+         */
+        var socketHitBtc = new WebSocket("wss://api.hitbtc.com/api/2/ws");
+        socketHitBtc.onopen = function(){
+            alert("HitBTC ok");
+
+            $(allRequest).each(function(k, v){
+                let req         = v.request_hitbtc;
+                if(typeof req == 'undefined'){
+                    return;
+                }
+                //console.log(req);
+
+                try{
+                    socketHitBtc.send(JSON.stringify(req));
+                } catch(exception){
+                    console.log(exception);
+                }
+            });
+        };
+
+        socketHitBtc.onmessage = function(msg){
+            if(typeof msg.data != 'undefined'){
+                // continue
+
+                if(typeof msg.data == 'undefined'){
+                    return;
+                }
+                let data = JSON.parse(msg.data).params;
+                $(allRequest).each(function(k, v){
+
+                    //console.log(data);
+                    if(typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol){
+                        let sell    = (parseFloat(data.ask)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+                        let buy     = (parseFloat(data.bid)*parseFloat($('base').data('usdt'))).formatMoney(2,',','.');
+
+                        $("#hitbtc-buy-" + v.id).text(buy);
+                        $("#hitbtc-sell-" + v.id).text(sell);
+                    }
+                })
+                //console.log(dataIndodax);
+            }
+
+            //console.log(msg.data);
+        }
+
+
+        /**
+         * Indodax Socket
+         * @type {WebSocket}
+         */
+        var socketIndodax = new WebSocket("wss://kline.indodax.com/ws/");
+        socketIndodax.onopen = function(){
+            alert("Socket has been opened!");
+
+            $(allRequest).each(function(k, v){
+                let req         = v.request_indodax;
+
+                try{
+                    socketIndodax.send(JSON.stringify(req));
+                } catch(exception){
+                    console.log(exception);
+                }
+            });
+        }
+
+        socketIndodax.onmessage = function(msg){
+            if(typeof msg.data != 'undefined'){
+                // continue
+
+                let dataIndodax = JSON.parse(msg.data);
+                $(allRequest).each(function(k, v){
+                    if(typeof dataIndodax.ch != 'undefined' && dataIndodax.ch == v.request_indodax.sub){
+                        let buy     = dataIndodax.tick.o.formatMoney(2,',','.');
+                        let sell    = dataIndodax.tick.c.formatMoney(2,',','.');
+
+                        // Special USDT - IDR
+                        if(dataIndodax.ch == 'usdtidr.kline.1m'){
+                            $("base").data('usdt', dataIndodax.tick.c);
+                        }
+
+                        $("#indodax-buy-" + v.id).text(buy);
+                        $("#indodax-sell-" + v.id).text(sell);
+                    }
+                })
+                //console.log(dataIndodax);
+            }
+
+            //console.log(msg.data);
+        }
+
+        Number.prototype.formatMoney = function(decPlaces, thouSeparator, decSeparator) {
+            var n = this,
+                decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+                decSeparator = decSeparator == undefined ? "." : decSeparator,
+                thouSeparator = thouSeparator == undefined ? "," : thouSeparator,
+                sign = n < 0 ? "-" : "",
+                i = parseInt(n = Math.abs(+n || 0).toFixed(decPlaces)) + "",
+                j = (j = i.length) > 3 ? j % 3 : 0;
+            return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
+        };
+    });
+</script>
+</body>
+</html>
