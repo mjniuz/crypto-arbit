@@ -17,6 +17,19 @@
         .sell{
             background-color: #fadfca;
         }
+
+        .opportunity-out{
+            background-color: #11a210;
+            color:white;
+        }
+        .opportunity-in{
+            background-color: red;
+            color:white;
+        }
+        .opportunity-in .opportunity-out{
+            background-color: #000000;
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -56,7 +69,11 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <table class="table table-striped table-bordered">
+            <p>
+                <span class="opportunity-out">Opportunity Indodax to Other</span>
+                <span class="opportunity-in">Opportunity Other to Indodax</span>
+            </p>
+            <table class="table table-sm table-striped table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -93,11 +110,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function(){
-        $.get("https://indodax.com/api/pairs", function(data, status){
+    $(document).ready(function() {
+        $.get("https://indodax.com/api/pairs", function (data, status) {
             console.log(data);
         });
-        $.get("https://api.hitbtc.com/api/2/public/symbol", function(data, status){
+        $.get("https://api.hitbtc.com/api/2/public/symbol", function (data, status) {
             console.log(data);
         });
         /*
@@ -113,21 +130,21 @@
         'USDT-UNI',
         'USDT-TRX',
         */
-        let allRequest  = [
+        let allRequest = [
             {
                 "id": "usdt-idr",
                 "title": "USDT",
                 "request_indodax": {
-                    "sub":"usdtidr.kline.1m",
-                    "id":"1"
+                    "sub": "usdtidr.kline.1m",
+                    "id": "1"
                 }
             },
             {
                 "id": "btc-idr",
                 "title": "BTC",
-                "request_indodax":{
-                    "sub":"btcidr.kline.1m",
-                    "id":"2"
+                "request_indodax": {
+                    "sub": "btcidr.kline.1m",
+                    "id": "2"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -136,14 +153,14 @@
                     },
                     "id": 2
                 },
-                "bittrex_pair":"USDT-BTC"
+                "bittrex_pair": "USDT-BTC"
             },
             {
                 "id": "str-idr",
                 "title": "XLM",
-                "request_indodax":{
-                    "sub":"stridr.kline.1m",
-                    "id":"3"
+                "request_indodax": {
+                    "sub": "stridr.kline.1m",
+                    "id": "3"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -152,14 +169,14 @@
                     },
                     "id": 3
                 },
-                "bittrex_pair":"USDT-XLM"
+                "bittrex_pair": "USDT-XLM"
             },
             {
                 "id": "xrp-idr",
                 "title": "XRP",
-                "request_indodax":{
-                    "sub":"xrpidr.kline.1m",
-                    "id":"4"
+                "request_indodax": {
+                    "sub": "xrpidr.kline.1m",
+                    "id": "4"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -168,7 +185,7 @@
                     },
                     "id": 4
                 },
-                "bittrex_pair":"USDT-XRP"
+                "bittrex_pair": "USDT-XRP"
             },
             {
                 "id": "ada-idr",
@@ -184,14 +201,14 @@
                     },
                     "id": 5
                 },
-                "bittrex_pair":"USDT-ADA"
+                "bittrex_pair": "USDT-ADA"
             },
             {
                 "id": "doge-idr",
                 "title": "DOGE",
-                "request_indodax":{
-                    "sub":"dogeidr.kline.1m",
-                    "id":"6"
+                "request_indodax": {
+                    "sub": "dogeidr.kline.1m",
+                    "id": "6"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -200,14 +217,14 @@
                     },
                     "id": 6
                 },
-                "bittrex_pair":"USDT-DOGE"
+                "bittrex_pair": "USDT-DOGE"
             },
             {
                 "id": "link-idr",
                 "title": "LINK",
-                "request_indodax":{
-                    "sub":"linkidr.kline.1m",
-                    "id":"7"
+                "request_indodax": {
+                    "sub": "linkidr.kline.1m",
+                    "id": "7"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -216,23 +233,23 @@
                     },
                     "id": 7
                 },
-                "bittrex_pair":"USDT-LINK"
+                "bittrex_pair": "USDT-LINK"
             },
             {
                 "id": "matic-idr",
                 "title": "MATIC",
-                "request_indodax":{
-                    "sub":"maticidr.kline.1m",
-                    "id":"8"
+                "request_indodax": {
+                    "sub": "maticidr.kline.1m",
+                    "id": "8"
                 },
-                "bittrex_pair":"USDT-MATIC"
+                "bittrex_pair": "USDT-MATIC"
             },
             {
                 "id": "uni-idr",
                 "title": "UNI",
-                "request_indodax":{
-                    "sub":"uniidr.kline.1m",
-                    "id":"9"
+                "request_indodax": {
+                    "sub": "uniidr.kline.1m",
+                    "id": "9"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -241,14 +258,14 @@
                     },
                     "id": 9
                 },
-                "bittrex_pair":"USDT-UNI"
+                "bittrex_pair": "USDT-UNI"
             },
             {
                 "id": "trx-idr",
                 "title": "TRX",
-                "request_indodax":{
-                    "sub":"trxidr.kline.1m",
-                    "id":"10"
+                "request_indodax": {
+                    "sub": "trxidr.kline.1m",
+                    "id": "10"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -257,14 +274,14 @@
                     },
                     "id": 10
                 },
-                "bittrex_pair":"USDT-TRX"
+                "bittrex_pair": "USDT-TRX"
             },
             {
                 "id": "xmr-idr",
                 "title": "XMR",
-                "request_indodax":{
-                    "sub":"xmridr.kline.1m",
-                    "id":"11"
+                "request_indodax": {
+                    "sub": "xmridr.kline.1m",
+                    "id": "11"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -273,39 +290,39 @@
                     },
                     "id": 11
                 },
-                "bittrex_pair":"USDT-XMR"
+                "bittrex_pair": "USDT-XMR"
             }
         ];
 
-        $(allRequest).each(function(k, v){
-            let htmlTable   = '';
+        $(allRequest).each(function (k, v) {
+            let htmlTable = '';
 
-            htmlTable   += '<tr>\n' +
-                '                   <th rowspan="2">'+ v.title +'</th>' +
+            htmlTable += '<tr>\n' +
+                '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + '</th>' +
                 '                   <td class="buy">' +
                 '                        Buy' +
                 '                   </td>' +
                 '                   <td class="buy">' +
-                '                       <span id="indodax-buy-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '" id="indodax-buy-' + v.id + '" data-num="" data-market="indodax" data-type="buy"></span>' +
                 '                   </td>' +
                 '                   <td class="buy">' +
-                '                       <span id="bittrex-buy-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '"  id="bittrex-buy-' + v.id + '" data-num="" data-market="bittrex" data-type="buy"></span>' +
                 '                   </td>' +
                 '                   <td class="buy">' +
-                '                       <span id="hitbtc-buy-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '"  id="hitbtc-buy-' + v.id + '" data-num="" data-market="hitbtc" data-type="buy"></span>' +
                 '                   </td>' +
                 '                </tr>';
 
-            htmlTable   += '<tr>\n' +
+            htmlTable += '<tr>\n' +
                 '                   <th class="sell">Sell</th>' +
                 '                   <td class="sell">' +
-                '                       <span id="indodax-sell-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '" id="indodax-sell-' + v.id + '" data-num="" data-market="indodax" data-type="sell"></span>' +
                 '                   </td>' +
                 '                   <td class="sell">' +
-                '                       <span id="bittrex-sell-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '" id="bittrex-sell-' + v.id + '" data-num="" data-market="bittrex" data-type="sell"></span>' +
                 '                   </td>' +
                 '                   <td class="sell">' +
-                '                       <span id="hitbtc-sell-'+ v.id +'"></span>' +
+                '                       <span class="' + v.id + '" id="hitbtc-sell-' + v.id + '" data-num="" data-market="hitbtc" data-type="sell"></span>' +
                 '                   </td>' +
                 '                </tr>';
 
@@ -317,41 +334,46 @@
          * @type {WebSocket}
          */
         var socketHitBtc = new WebSocket("wss://api.hitbtc.com/api/2/ws");
-        socketHitBtc.onopen = function(){
+        socketHitBtc.onopen = function () {
             alert("HitBTC ok");
 
-            $(allRequest).each(function(k, v){
-                let req         = v.request_hitbtc;
-                if(typeof req == 'undefined'){
+            $(allRequest).each(function (k, v) {
+                let req = v.request_hitbtc;
+                if (typeof req == 'undefined') {
                     return;
                 }
                 //console.log(req);
 
-                try{
+                try {
                     socketHitBtc.send(JSON.stringify(req));
-                } catch(exception){
+                } catch (exception) {
                     console.log(exception);
                 }
             });
         };
 
-        socketHitBtc.onmessage = function(msg){
-            if(typeof msg.data != 'undefined'){
+        socketHitBtc.onmessage = function (msg) {
+            if (typeof msg.data != 'undefined') {
                 // continue
 
-                if(typeof msg.data == 'undefined'){
+                if (typeof msg.data == 'undefined') {
                     return;
                 }
                 let data = JSON.parse(msg.data).params;
-                $(allRequest).each(function(k, v){
+                $(allRequest).each(function (k, v) {
 
                     //console.log(data);
-                    if(typeof data != 'undefined' && typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol){
-                        let sell    = formatMoney(parseFloat(data.ask)*parseFloat($('base').data('usdt')),2,',','.');
-                        let buy     = formatMoney(parseFloat(data.bid)*parseFloat($('base').data('usdt')),2,',','.');
+                    if (typeof data != 'undefined' && typeof data.symbol != 'undefined' && typeof v.request_hitbtc != 'undefined' && data.symbol == v.request_hitbtc.params.symbol) {
+                        let sell = formatMoney(parseFloat(data.ask) * parseFloat($('base').data('usdt')), 2, ',', '.');
+                        let buy = formatMoney(parseFloat(data.bid) * parseFloat($('base').data('usdt')), 2, ',', '.');
 
                         $("#hitbtc-buy-" + v.id).text(buy);
                         $("#hitbtc-sell-" + v.id).text(sell);
+
+                        $("#hitbtc-buy-" + v.id).data('num', parseFloat(data.bid));
+                        $("#hitbtc-sell-" + v.id).data('num', parseFloat(data.ask));
+                        opportunity(v.id);
+
                     }
                 })
                 //console.log(dataIndodax);
@@ -366,37 +388,41 @@
          * @type {WebSocket}
          */
         var socketIndodax = new WebSocket("wss://kline.indodax.com/ws/");
-        socketIndodax.onopen = function(){
+        socketIndodax.onopen = function () {
             alert("Socket has been opened!");
 
-            $(allRequest).each(function(k, v){
-                let req         = v.request_indodax;
+            $(allRequest).each(function (k, v) {
+                let req = v.request_indodax;
 
-                try{
+                try {
                     socketIndodax.send(JSON.stringify(req));
-                } catch(exception){
+                } catch (exception) {
                     console.log(exception);
                 }
             });
         }
 
-        socketIndodax.onmessage = function(msg){
-            if(typeof msg.data != 'undefined'){
+        socketIndodax.onmessage = function (msg) {
+            if (typeof msg.data != 'undefined') {
                 // continue
 
                 let dataIndodax = JSON.parse(msg.data);
-                $(allRequest).each(function(k, v){
-                    if(typeof dataIndodax.ch != 'undefined' && dataIndodax.ch == v.request_indodax.sub){
-                        let buy     = formatMoney(dataIndodax.tick.o, 2,',','.');
-                        let sell    = formatMoney(dataIndodax.tick.c,2,',','.');
+                $(allRequest).each(function (k, v) {
+                    if (typeof dataIndodax.ch != 'undefined' && dataIndodax.ch == v.request_indodax.sub) {
+                        let buy = formatMoney(dataIndodax.tick.o, 2, ',', '.');
+                        let sell = formatMoney(dataIndodax.tick.c, 2, ',', '.');
 
                         // Special USDT - IDR
-                        if(dataIndodax.ch == 'usdtidr.kline.1m'){
+                        if (dataIndodax.ch == 'usdtidr.kline.1m') {
                             $("base").data('usdt', dataIndodax.tick.c);
                         }
 
                         $("#indodax-buy-" + v.id).text(buy);
                         $("#indodax-sell-" + v.id).text(sell);
+
+                        $("#indodax-buy-" + v.id).data('num', dataIndodax.tick.c);
+                        $("#indodax-sell-" + v.id).data('num', dataIndodax.tick.o);
+                        opportunity(v.id);
                     }
                 })
                 //console.log(dataIndodax);
@@ -410,25 +436,30 @@
          */
         var socketBittrex = new WebSocket("wss://bittrex-node-socket-7rg3r.ondigitalocean.app");
         //var socketBittrex = new WebSocket("ws://localhost:8080");
-        socketBittrex.onopen = function(){
+        socketBittrex.onopen = function () {
             alert("Socket has been opened Bittrex!");
         }
 
-        socketBittrex.onmessage = function(msg){
+        socketBittrex.onmessage = function (msg) {
             //console.log(msg);
-            if(typeof msg.data != 'undefined'){
+            if (typeof msg.data != 'undefined') {
                 // continue
                 let dataBittrex = JSON.parse(msg.data).data;
 
                 //console.log({"bittrex": dataBittrex});
-                $(allRequest).each(function(k, v){
-                    if(typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair){
-                        let sell    = formatMoney(dataBittrex.sell*parseFloat($('base').data('usdt')) ,2,',','.');
-                        let buy     = formatMoney(dataBittrex.buy*parseFloat($('base').data('usdt')), 2,',','.');
+                $(allRequest).each(function (k, v) {
+                    if (typeof dataBittrex.pair != 'undefined' && dataBittrex.pair == v.bittrex_pair) {
+                        let sell = formatMoney(dataBittrex.sell * parseFloat($('base').data('usdt')), 2, ',', '.');
+                        let buy = formatMoney(dataBittrex.buy * parseFloat($('base').data('usdt')), 2, ',', '.');
 
                         //console.log(sell);
                         $("#bittrex-buy-" + v.id).text(buy);
                         $("#bittrex-sell-" + v.id).text(sell);
+
+                        $("#bittrex-buy-" + v.id).data('num', dataBittrex.buy);
+                        $("#bittrex-sell-" + v.id).data('num', dataBittrex.sell);
+
+                        opportunity(v.id);
                     }
                 })
                 //console.log(dataIndodax);
@@ -438,7 +469,7 @@
         }
 
 
-         function formatMoney(num, decPlaces, thouSeparator, decSeparator) {
+        function formatMoney(num, decPlaces, thouSeparator, decSeparator) {
             var n = num,
                 decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
                 decSeparator = decSeparator == undefined ? "." : decSeparator,
@@ -448,6 +479,137 @@
                 j = (j = i.length) > 3 ? j % 3 : 0;
             return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
         };
+
+        function opportunity(id) {
+            /*
+            Buy From Indodax and Sell to other
+             */
+
+            let sellElIndodax = $('#indodax-sell-' + id);
+            let sellElBittrex = $('#bittrex-sell-' + id);
+            let sellElHitBtc = $('#hitbtc-sell-' + id);
+
+
+            let buyElIndodax = $('#indodax-buy-' + id);
+            let buyElBittrex = $('#bittrex-buy-' + id);
+            let buyElHitBtc = $('#hitbtc-buy-' + id);
+
+            let buyIndodaxNum = 0;
+            let buyBittrexNum = 0;
+            let buyHitBtcNum = 0;
+            if (buyElIndodax.data('market') == 'indodax' && buyElIndodax.data('type') == 'buy') {
+                buyIndodaxNum = parseFloat(buyElIndodax.data('num'));
+            }
+            if (buyElBittrex.data('market') == 'bittrex' && buyElBittrex.data('type') == 'buy') {
+                buyBittrexNum = parseFloat(buyElBittrex.data('num')) * parseFloat($('base').data('usdt'));
+            }
+            if (buyElHitBtc.data('market') == 'hitbtc' && buyElHitBtc.data('type') == 'buy') {
+                buyHitBtcNum = parseFloat(buyElHitBtc.data('num')) * parseFloat($('base').data('usdt'));
+            }
+
+
+            let sellIndodaxNum = 0;
+            let sellBittrexNum = 0;
+            let sellHitBtcNum = 0;
+            if (sellElIndodax.data('market') == 'indodax' && sellElIndodax.data('type') == 'sell') {
+                sellIndodaxNum = parseFloat(sellElIndodax.data('num'));
+            }
+            if (sellElBittrex.data('market') == 'bittrex' && sellElBittrex.data('type') == 'sell') {
+                sellBittrexNum = parseFloat(sellElBittrex.data('num')) * parseFloat($('base').data('usdt'));
+            }
+            if (sellElHitBtc.data('market') == 'hitbtc' && sellElHitBtc.data('type') == 'sell') {
+                sellHitBtcNum = parseFloat(sellElHitBtc.data('num')) * parseFloat($('base').data('usdt'));
+            }
+
+
+            // Opportunity OUT
+            if (!isNaN(buyIndodaxNum) && buyIndodaxNum > 0 && (!isNaN(buyBittrexNum) && buyBittrexNum > 0 || !isNaN(buyHitBtcNum) && buyHitBtcNum > 0)) {
+                /*console.log({
+                    "bittrex": sellBittrexNum,
+                    "hitBtc": sellHitBtcNum,
+                    "indodax": buyIndodaxNum
+                });*/
+                let isOpportunityOut = false;
+                $('.head-' + id).removeClass('opportunity-out');
+                if (sellIndodaxNum < buyBittrexNum || sellIndodaxNum < buyHitBtcNum) {
+                    isOpportunityOut = true;
+                    $('.head-' + id).addClass('opportunity-out');
+                    //console.log("out : " + id + ' - ');
+                    //console.log($('.head-' + id));
+                }
+            }
+
+
+            // Opportunity In
+            if (!isNaN(buyIndodaxNum) && buyIndodaxNum > 0 && (!isNaN(sellBittrexNum) && sellBittrexNum > 0 || !isNaN(sellHitBtcNum) && sellHitBtcNum > 0)) {
+                let isOpportunityIn = false;
+                $('.head-' + id).removeClass('opportunity-in');
+                /**/
+                if (buyIndodaxNum > sellBittrexNum || buyIndodaxNum > sellHitBtcNum) {
+                    isOpportunityIn = true;
+                    $('.head-' + id).addClass('opportunity-in');
+                    //console.log($('.head-' + id));
+                }
+            }
+        }
+
+        window.setInterval(function () {
+            /// call your function here
+        }, 5000);
+
+        function decicionSuggest() {
+            $('.opportunity-out').each(function (k, v) {
+                var id = $(v).data('id');
+
+            });
+        }
+
+        function getBuySell(id){
+            let sellElIndodax = $('#indodax-sell-' + id);
+            let sellElBittrex = $('#bittrex-sell-' + id);
+            let sellElHitBtc = $('#hitbtc-sell-' + id);
+
+            let buyElIndodax = $('#indodax-buy-' + id);
+            let buyElBittrex = $('#bittrex-buy-' + id);
+            let buyElHitBtc = $('#hitbtc-buy-' + id);
+
+
+            let buyIndodaxNum = 0;
+            let buyBittrexNum = 0;
+            let buyHitBtcNum = 0;
+            if (buyElIndodax.data('market') == 'indodax' && buyElIndodax.data('type') == 'buy') {
+                buyIndodaxNum = parseFloat(buyElIndodax.data('num'));
+            }
+            if (buyElBittrex.data('market') == 'bittrex' && buyElBittrex.data('type') == 'buy') {
+                buyBittrexNum = parseFloat(buyElBittrex.data('num')) * parseFloat($('base').data('usdt'));
+            }
+            if (buyElHitBtc.data('market') == 'hitbtc' && buyElHitBtc.data('type') == 'buy') {
+                buyHitBtcNum = parseFloat(buyElHitBtc.data('num')) * parseFloat($('base').data('usdt'));
+            }
+
+            let sellIndodaxNum = 0;
+            let sellBittrexNum = 0;
+            let sellHitBtcNum = 0;
+            if (sellElIndodax.data('market') == 'indodax' && sellElIndodax.data('type') == 'sell') {
+                sellIndodaxNum = parseFloat(sellElIndodax.data('num'));
+            }
+            if (sellElBittrex.data('market') == 'bittrex' && sellElBittrex.data('type') == 'sell') {
+                sellBittrexNum = parseFloat(sellElBittrex.data('num')) * parseFloat($('base').data('usdt'));
+            }
+            if (sellElHitBtc.data('market') == 'hitbtc' && sellElHitBtc.data('type') == 'sell') {
+                sellHitBtcNum = parseFloat(sellElHitBtc.data('num')) * parseFloat($('base').data('usdt'));
+            }
+
+            return {
+                'buyIndodaxNum': buyIndodaxNum,
+                'buyBittrexNum':buyBittrexNum,
+                'buyHitBtcNum':buyHitBtcNum,
+                'sellIndodaxNum':sellIndodaxNum,
+                'sellBittrexNum':sellBittrexNum,
+                'sellHitBtcNum':sellHitBtcNum
+            }
+
+        }
     });
 </script>
 </body>
