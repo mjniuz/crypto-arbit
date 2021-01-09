@@ -291,6 +291,22 @@
                     "id": 11
                 },
                 "bittrex_pair": "USDT-XMR"
+            },
+            {
+                "id": "btt-idr",
+                "title": "BTT",
+                "request_indodax": {
+                    "sub": "bttidr.kline.1m",
+                    "id": "11"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "BTTUSD"
+                    },
+                    "id": 11
+                },
+                "bittrex_pair": "USDT-BTT"
             }
         ];
 
@@ -553,9 +569,9 @@
             }
         }
 
-        window.setInterval(function () {
+        /*window.setInterval(function () {
             /// call your function here
-        }, 5000);
+        }, 5000);*/
 
         function decicionSuggest() {
             $('.opportunity-out').each(function (k, v) {
