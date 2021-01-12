@@ -341,18 +341,34 @@
                 "bittrex_pair": "USDT-IOST"
             },
             {
+                "id": "mkr-idr",
+                "title": "MKR",
+                "request_indodax": {
+                    "sub": "mkridr.kline.1m",
+                    "id": "15"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "MKRUSD"
+                    },
+                    "id": 15
+                },
+                "bittrex_pair": "USDT-MKR"
+            },
+            {
                 "id": "mbl-idr",
                 "title": "MBL",
                 "request_indodax": {
                     "sub": "mblidr.kline.1m",
-                    "id": "15"
+                    "id": "16"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
                     "params": {
                         "symbol": "MBLUSD"
                     },
-                    "id": 15
+                    "id": 16
                 },
                 "bittrex_pair": "USDT-MBL"
             }
