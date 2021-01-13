@@ -420,11 +420,11 @@
         socketHitBtc.onopen = function () {
             switchOnOff('hitbtc-status', true, "ON");
 
-            socketHitBtc.onclose    = function(){
+            socketHitBtc.onclose = function () {
                 switchOnOff('hitbtc-status', false, "OFF");
             }
 
-            socketHitBtc.onerror    = function(){
+            socketHitBtc.onerror = function () {
                 switchOnOff('hitbtc-status', false, "ERROR");
             }
 
@@ -441,6 +441,7 @@
                     console.log(exception);
                 }
             });
+        }
 
         socketHitBtc.onmessage = function (msg) {
             if (typeof msg.data != 'undefined') {
