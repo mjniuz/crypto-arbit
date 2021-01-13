@@ -78,9 +78,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Indodax</th>
-                    <th scope="col">Bittrex</th>
-                    <th scope="col">HitBTC</th>
+                    <th scope="col">Indodax <span class="badge" id="indodax-status"></span></th>
+                    <th scope="col">HitBTC <span class="badge" id="hitbtc-status"></span></th>
+                    <th scope="col">Bittrex <span class="badge" id="bittrex-status"></span></th>
                 </tr>
                 </thead>
                 <tbody id="result">
@@ -419,6 +419,7 @@
         var socketHitBtc = new WebSocket("wss://api.hitbtc.com/api/2/ws");
         socketHitBtc.onopen = function () {
             alert("HitBTC ok");
+            $('#hitbtc-status').addClass('badge-success');
 
             $(allRequest).each(function (k, v) {
                 let req = v.request_hitbtc;
@@ -434,6 +435,14 @@
                 }
             });
         };
+
+        socketHitBtc.onclose    = function(){
+            $('#hitbtc-status').addClass('badge-error');
+        }
+
+        socketHitBtc.onerror    = function(){
+            $('#hitbtc-status').addClass('badge-error');
+        }
 
         socketHitBtc.onmessage = function (msg) {
             if (typeof msg.data != 'undefined') {
@@ -472,6 +481,7 @@
          */
         var socketIndodax = new WebSocket("wss://kline.indodax.com/ws/");
         socketIndodax.onopen = function () {
+            $('#indodax-status').addClass('badge-success');
             alert("Socket has been opened!");
 
             $(allRequest).each(function (k, v) {
@@ -483,6 +493,14 @@
                     console.log(exception);
                 }
             });
+        }
+
+        socketHitBtc.onclose    = function(){
+            $('#indodax-status').addClass('badge-error');
+        }
+
+        socketHitBtc.onerror    = function(){
+            $('#indodax-status').addClass('badge-error');
         }
 
         socketIndodax.onmessage = function (msg) {
@@ -520,7 +538,16 @@
         var socketBittrex = new WebSocket("wss://bittrex-node-socket-7rg3r.ondigitalocean.app");
         //var socketBittrex = new WebSocket("ws://localhost:8080");
         socketBittrex.onopen = function () {
+            $('#bittrex-status').addClass('badge-success');
             alert("Socket has been opened Bittrex!");
+        }
+
+        socketHitBtc.onclose    = function(){
+            $('#bittrex-status').addClass('badge-error');
+        }
+
+        socketHitBtc.onerror    = function(){
+            $('#bittrex-status').addClass('badge-error');
         }
 
         socketBittrex.onmessage = function (msg) {
