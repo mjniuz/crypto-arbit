@@ -675,11 +675,11 @@
         function switchOnOff(id, isOn, text){
             $('#' + id).text(text);
             if(isOn){
-                $('#' + id).removeClass('badge-error');
+                $('#' + id).removeClass('badge-danger');
                 $('#' + id).addClass('badge-success');
             }else{
                 $('#' + id).removeClass('badge-success');
-                $('#' + id).addClass('badge-error');
+                $('#' + id).addClass('badge-danger');
             }
         }
 
