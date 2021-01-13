@@ -420,6 +420,7 @@
         socketHitBtc.onopen = function () {
             alert("HitBTC ok");
             $('#hitbtc-status').addClass('badge-success');
+            $('#hitbtc-status').text("ON");
 
             $(allRequest).each(function (k, v) {
                 let req = v.request_hitbtc;
@@ -438,10 +439,12 @@
 
         socketHitBtc.onclose    = function(){
             $('#hitbtc-status').addClass('badge-error');
+            $('#hitbtc-status').text("OFF");
         }
 
         socketHitBtc.onerror    = function(){
             $('#hitbtc-status').addClass('badge-error');
+            $('#hitbtc-status').text("ERROR");
         }
 
         socketHitBtc.onmessage = function (msg) {
@@ -482,6 +485,7 @@
         var socketIndodax = new WebSocket("wss://kline.indodax.com/ws/");
         socketIndodax.onopen = function () {
             $('#indodax-status').addClass('badge-success');
+            $('#indodax-status').text("ON");
             alert("Socket has been opened!");
 
             $(allRequest).each(function (k, v) {
@@ -497,10 +501,12 @@
 
         socketHitBtc.onclose    = function(){
             $('#indodax-status').addClass('badge-error');
+            $('#indodax-status').text("OFF");
         }
 
         socketHitBtc.onerror    = function(){
             $('#indodax-status').addClass('badge-error');
+            $('#indodax-status').text("ERROR");
         }
 
         socketIndodax.onmessage = function (msg) {
@@ -539,15 +545,18 @@
         //var socketBittrex = new WebSocket("ws://localhost:8080");
         socketBittrex.onopen = function () {
             $('#bittrex-status').addClass('badge-success');
+            $('#bittrex-status').text("ON");
             alert("Socket has been opened Bittrex!");
         }
 
         socketHitBtc.onclose    = function(){
             $('#bittrex-status').addClass('badge-error');
+            $('#bittrex-status').text("OFF");
         }
 
         socketHitBtc.onerror    = function(){
             $('#bittrex-status').addClass('badge-error');
+            $('#bittrex-status').text("ERROR");
         }
 
         socketBittrex.onmessage = function (msg) {
