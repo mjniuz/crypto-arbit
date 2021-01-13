@@ -497,16 +497,16 @@
                     console.log(exception);
                 }
             });
-        }
 
-        socketHitBtc.onclose    = function(){
-            $('#indodax-status').addClass('badge-error');
-            $('#indodax-status').text("OFF");
-        }
+            socketHitBtc.onclose    = function(){
+                $('#indodax-status').addClass('badge-error');
+                $('#indodax-status').text("OFF");
+            }
 
-        socketHitBtc.onerror    = function(){
-            $('#indodax-status').addClass('badge-error');
-            $('#indodax-status').text("ERROR");
+            socketHitBtc.onerror    = function(){
+                $('#indodax-status').addClass('badge-error');
+                $('#indodax-status').text("ERROR");
+            }
         }
 
         socketIndodax.onmessage = function (msg) {
