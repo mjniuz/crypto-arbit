@@ -124,7 +124,8 @@
                 "title": "USDT",
                 "request_indodax": {
                     "sub": "usdtidr.kline.1m",
-                    "id": "1"
+                    "id": "1",
+                    "pair_id": "usdt_idr"
                 }
             },
             {
@@ -132,7 +133,8 @@
                 "title": "BTC",
                 "request_indodax": {
                     "sub": "btcidr.kline.1m",
-                    "id": "2"
+                    "id": "2",
+                    "pair_id": "btc_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -148,7 +150,8 @@
                 "title": "XLM",
                 "request_indodax": {
                     "sub": "stridr.kline.1m",
-                    "id": "3"
+                    "id": "3",
+                    "pair_id": "str_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -164,7 +167,8 @@
                 "title": "XRP",
                 "request_indodax": {
                     "sub": "xrpidr.kline.1m",
-                    "id": "4"
+                    "id": "4",
+                    "pair_id": "xrp_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -180,7 +184,8 @@
                 "title": "ADA",
                 "request_indodax": {
                     "sub": "adaidr.kline.1m",
-                    "id": "5"
+                    "id": "5",
+                    "pair_id": "ada_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -196,7 +201,8 @@
                 "title": "DOGE",
                 "request_indodax": {
                     "sub": "dogeidr.kline.1m",
-                    "id": "6"
+                    "id": "6",
+                    "pair_id": "doge_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -212,7 +218,8 @@
                 "title": "LINK",
                 "request_indodax": {
                     "sub": "linkidr.kline.1m",
-                    "id": "7"
+                    "id": "7",
+                    "pair_id": "link_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -228,7 +235,8 @@
                 "title": "MATIC",
                 "request_indodax": {
                     "sub": "maticidr.kline.1m",
-                    "id": "8"
+                    "id": "8",
+                    "pair_id": "matic_idr"
                 },
                 "bittrex_pair": "USDT-MATIC"
             },
@@ -237,7 +245,8 @@
                 "title": "UNI",
                 "request_indodax": {
                     "sub": "uniidr.kline.1m",
-                    "id": "9"
+                    "id": "9",
+                    "pair_id": "uni_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -253,7 +262,8 @@
                 "title": "TRX",
                 "request_indodax": {
                     "sub": "trxidr.kline.1m",
-                    "id": "10"
+                    "id": "10",
+                    "pair_id": "trx_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -269,7 +279,8 @@
                 "title": "XMR",
                 "request_indodax": {
                     "sub": "xmridr.kline.1m",
-                    "id": "11"
+                    "id": "11",
+                    "pair_id": "xmr_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -285,7 +296,8 @@
                 "title": "BTT",
                 "request_indodax": {
                     "sub": "bttidr.kline.1m",
-                    "id": "12"
+                    "id": "12",
+                    "pair_id": "btt_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -301,7 +313,8 @@
                 "title": "NXT",
                 "request_indodax": {
                     "sub": "nxtidr.kline.1m",
-                    "id": "13"
+                    "id": "13",
+                    "pair_id": "nxt_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -317,7 +330,8 @@
                 "title": "IOST",
                 "request_indodax": {
                     "sub": "iostidr.kline.1m",
-                    "id": "14"
+                    "id": "14",
+                    "pair_id": "iost_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -333,7 +347,8 @@
                 "title": "MKR",
                 "request_indodax": {
                     "sub": "mkridr.kline.1m",
-                    "id": "15"
+                    "id": "15",
+                    "pair_id": "mkr_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -349,7 +364,8 @@
                 "title": "MBL",
                 "request_indodax": {
                     "sub": "mblidr.kline.1m",
-                    "id": "16"
+                    "id": "16",
+                    "pair_id": "mbl_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -365,7 +381,8 @@
                 "title": "WAVES",
                 "request_indodax": {
                     "sub": "wavesidr.kline.1m",
-                    "id": "17"
+                    "id": "17",
+                    "pair_id": "waves_idr"
                 },
                 "request_hitbtc": {
                     "method": "subscribeTicker",
@@ -382,7 +399,7 @@
             let htmlTable = '';
 
             htmlTable += '<tr>\n' +
-                '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + '</th>' +
+                '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + ' <span id="percent-'+ v.id +'"></span></th>' +
                 '                   <td class="buy">' +
                 '                        Buy' +
                 '                   </td>' +
@@ -459,6 +476,18 @@
                         let sell = formatMoney(parseFloat(data.ask) * parseFloat($('base').data('usdt')), 2, ',', '.');
                         let buy = formatMoney(parseFloat(data.bid) * parseFloat($('base').data('usdt')), 2, ',', '.');
 
+                        //console.log('indodax-sell-' + v.id);
+                        let indodaxSell = parseFloat($('indodax-sell-' + v.id).data('num'));
+                        let indodaxBuy  = parseFloat($('indodax-buy-' + v.id).data('num'));
+                        if(indodaxSell > 0 && indodaxBuy > 0){
+                            let indodaxIsdt =  parseFloat($('base').data('usdt'));
+
+                            let percentMarginOut      =  (indodaxSell - (parseFloat(data.ask) * indodaxIsdt)) / indodaxSell * 100;
+                            let percentMarginIn      =  ((parseFloat(data.bid) * indodaxIsdt) - indodaxBuy) / indodaxBuy * 100;
+
+                            $('#percent-' + v.id).text(formatMoney((percentMarginIn > percentMarginOut ? percentMarginIn : percentMarginOut), 2, ',', '.'));
+                        }
+
                         $("#hitbtc-buy-" + v.id).text(buy);
                         $("#hitbtc-sell-" + v.id).text(sell);
 
@@ -522,6 +551,7 @@
 
                         $("#indodax-buy-" + v.id).data('num', dataIndodax.tick.c);
                         $("#indodax-sell-" + v.id).data('num', dataIndodax.tick.o);
+                        console.log(dataIndodax.tick.c);
                         opportunity(v.id);
                     }
                 })
@@ -529,6 +559,42 @@
             }
 
             //console.log(msg.data);
+        }
+
+        apiIndodaxManual();
+        setInterval(function() {
+            apiIndodaxManual();
+        }, 1000 * 10 * 1);
+
+        function apiIndodaxManual(){
+            // Host https://indodax.com/api/ticker_all
+            $.get("https://indodax.com/api/ticker_all", function (data, status) {
+                let tickers     = data.tickers;
+                //console.log(tickers);
+                if(typeof tickers != 'undefined'){
+                    $(allRequest).each(function (k, v) {
+                        if(typeof tickers[v.request_indodax.pair_id] != 'undefined'){
+                            //console.log(tickers[v.request_indodax.pair_id]);
+                            let theVal  = tickers[v.request_indodax.pair_id];
+
+                            let buy = formatMoney(theVal.buy, 2, ',', '.');
+                            let sell = formatMoney(theVal.sell, 2, ',', '.');
+
+                            // Special USDT - IDR
+                            if (v.id == 'usdt-idr') {
+                                $("base").data('usdt', theVal.last);
+                            }
+
+                            $("#indodax-buy-" + v.id).text(buy);
+                            $("#indodax-sell-" + v.id).text(sell);
+
+                            $("#indodax-buy-" + v.id).data('num', theVal.buy);
+                            $("#indodax-sell-" + v.id).data('num', theVal.sell);
+                            opportunity(v.id);
+                        }
+                    });
+                }
+            });
         }
         /**
          * Bittrex Socket
