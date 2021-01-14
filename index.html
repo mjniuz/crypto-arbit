@@ -31,6 +31,10 @@
             background-color: #000000;
             color:white;
         }
+
+        tr.zoom-hover:hover {
+            //transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
     </style>
 </head>
 <body>
@@ -392,13 +396,30 @@
                     "id": 17
                 },
                 "bittrex_pair": "USDT-WAVES"
+            },
+            {
+                "id": "eos-idr",
+                "title": "EOS",
+                "request_indodax": {
+                    "sub": "eosidr.kline.1m",
+                    "id": "18",
+                    "pair_id": "eos_idr"
+                },
+                "request_hitbtc": {
+                    "method": "subscribeTicker",
+                    "params": {
+                        "symbol": "EOSUSD"
+                    },
+                    "id": 18
+                },
+                "bittrex_pair": "USDT-EOS"
             }
         ];
 
         $(allRequest).each(function (k, v) {
             let htmlTable = '';
 
-            htmlTable += '<tr>\n' +
+            htmlTable += '<tr class="zoom-hover">\n' +
                 '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + ' <span class="badge badge-primary" id="percent-'+ v.id +'"></span></th>' +
                 '                   <td class="buy">' +
                 '                        Buy' +
@@ -414,8 +435,8 @@
                 '                   </td>' +
                 '                </tr>';
 
-            htmlTable += '<tr>\n' +
-                '                   <th class="sell">Sell</th>' +
+            htmlTable += '<tr class="zoom-hover">\n' +
+                '                   <td class="sell">Sell</td>' +
                 '                   <td class="sell">' +
                 '                       <span class="' + v.id + '" id="indodax-sell-' + v.id + '" data-num="" data-market="indodax" data-type="sell"></span>' +
                 '                   </td>' +
