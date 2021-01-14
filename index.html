@@ -399,7 +399,7 @@
             let htmlTable = '';
 
             htmlTable += '<tr>\n' +
-                '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + ' <span id="percent-'+ v.id +'"></span></th>' +
+                '                   <th rowspan="2" class="head-' + v.id + '" data-id="' + v.id + '">' + v.title + ' <span class="badge badge-primary" id="percent-'+ v.id +'"></span></th>' +
                 '                   <td class="buy">' +
                 '                        Buy' +
                 '                   </td>' +
@@ -477,15 +477,15 @@
                         let buy = formatMoney(parseFloat(data.bid) * parseFloat($('base').data('usdt')), 2, ',', '.');
 
                         //console.log('indodax-sell-' + v.id);
-                        let indodaxSell = parseFloat($('indodax-sell-' + v.id).data('num'));
-                        let indodaxBuy  = parseFloat($('indodax-buy-' + v.id).data('num'));
+                        let indodaxSell = parseFloat($('#indodax-sell-' + v.id).data('num'));
+                        let indodaxBuy  = parseFloat($('#indodax-buy-' + v.id).data('num'));
                         if(indodaxSell > 0 && indodaxBuy > 0){
                             let indodaxIsdt =  parseFloat($('base').data('usdt'));
 
                             let percentMarginOut      =  (indodaxSell - (parseFloat(data.ask) * indodaxIsdt)) / indodaxSell * 100;
                             let percentMarginIn      =  ((parseFloat(data.bid) * indodaxIsdt) - indodaxBuy) / indodaxBuy * 100;
 
-                            $('#percent-' + v.id).text(formatMoney((percentMarginIn > percentMarginOut ? percentMarginIn : percentMarginOut), 2, ',', '.'));
+                            $('#percent-' + v.id).text(formatMoney((percentMarginIn > percentMarginOut ? percentMarginIn : percentMarginOut), 2, ',', '.') + '%');
                         }
 
                         $("#hitbtc-buy-" + v.id).text(buy);
