@@ -606,6 +606,7 @@
         socketIndodax.onmessage = function (msg) {
             if (typeof msg.data != 'undefined') {
                 // continue
+                return;
 
                 let dataIndodax = JSON.parse(msg.data);
                 $(allRequest).each(function (k, v) {
